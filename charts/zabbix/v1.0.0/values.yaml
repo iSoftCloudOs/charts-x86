@@ -7,4 +7,5 @@ hostpath:
   path: /data/zabbix
 
 nodePort:
-  port:
+  webport:
+  serverport:

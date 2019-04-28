@@ -8,8 +8,15 @@ spec:
     - port: 80
       targetPort: 80
 {{- if .Values.nodePort.port }}
-      nodePort: {{ .Values.nodePort.port }}
+      nodePort: {{ .Values.nodePort.webport }}
 {{- end }}
+      name: web
+    - port: 10051
+      targetPort: 10051
+{{- if .Values.nodePort.port }}
+      nodePort: {{ .Values.nodePort.serverport }}
+{{- end }}
+      name: server
   selector:
     app: {{ template "zabbix.name" . }}
     release: "{{ .Release.Name }}"

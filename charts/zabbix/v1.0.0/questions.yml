@@ -28,9 +28,11 @@ questions:
   show_subquestion_if: false
   group: "端口"
   subquestions:
-  - variable: nodePort.port
-    description: "端口号请在 30000-32767之间选择"
+  - variable: nodePort.webport
+    description: "网页端口号"
     type: int
-    min: 30000
-    max: 32767
+    label: 端口号：
+  - variable: nodePort.serverport
+    description: "网页端口号"
+    type: int
     label: 端口号：

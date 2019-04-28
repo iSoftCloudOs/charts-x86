@@ -15,6 +15,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
           ports:
           - containerPort: 80
+          - containerPort: 10051
           volumeMounts:
           - name: {{ template "zabbix.fullname" . }}-mysql
             mountPath: /var/lib/mysql
