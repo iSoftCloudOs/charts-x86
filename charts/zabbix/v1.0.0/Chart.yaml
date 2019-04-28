@@ -1,0 +1,8 @@
+appVersion: 10.0.10
+description: zabbix
+name: zabbix
+version: v2.0.5
+kewords:
+- zabbix
+home: https://zabbix.org/
+icon: http://hub.i-soft.com.cn:5081/zabbix.png

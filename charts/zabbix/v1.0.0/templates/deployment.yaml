@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "zabbix.fullname" . }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ template "zabbix.name" . }}
+        release: "{{ .Release.Name }}"
+    spec:
+      containers:
+        - name: zabbix
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
+          ports:
+          - containerPort: 80
+          volumeMounts:
+          - name: {{ template "zabbix.fullname" . }}-mysql
+            mountPath: /var/lib/mysql
+          - name: {{ template "zabbix.fullname" . }}-zabbix
+            mountPath: /var/lib/zabbix
+      volumes:
+       - name: {{ template "zabbix.fullname" . }}-mysql
+         hostPath:
+           path: {{ .Values.hostpath.path }}/mysql
+       - name: {{ template "zabbix.fullname" . }}-zabbix
+         hostPath:
+           path: {{ .Values.hostpath.path }}/zabbix

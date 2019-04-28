@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "zabbix.fullname" . }}
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      targetPort: 80
+{{- if .Values.nodePort.port }}
+      nodePort: {{ .Values.nodePort.port }}
+{{- end }}
+  selector:
+    app: {{ template "zabbix.name" . }}
+    release: "{{ .Release.Name }}"
+
