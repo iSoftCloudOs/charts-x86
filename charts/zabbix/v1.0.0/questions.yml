@@ -31,8 +31,8 @@ questions:
   - variable: nodePort.webport
     description: "网页端口号"
     type: int
-    label: 端口号：
+    label: 网页端口号：
   - variable: nodePort.serverport
-    description: "网页端口号"
+    description: "服务端口号"
     type: int
-    label: 端口号：
+    label: 服务端口号：
